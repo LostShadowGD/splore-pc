@@ -10,12 +10,20 @@ from PyQt5.QtCore import Qt
 from PyQt5.QtWidgets import QShortcut
 from PyQt5.QtGui import QKeySequence
 import sys
+from subprocess import Popen
+import subprocess
 
 download_dir = "PICO-8 Roms"  # Change this to your desired directory
 
 newCarts = "https://www.lexaloffle.com/bbs/?cat=7&carts_tab=1#sub=2&mode=carts&orderby=ts"
 featuredCarts = "https://www.lexaloffle.com/bbs/?cat=7&carts_tab=1#sub=2&mode=carts&orderby=featured"
 randomCarts = "https://www.lexaloffle.com/bbs/?cat=7&carts_tab=1#sub=2&mode=carts&orderby=lucky"
+
+def restart_program():
+    print("Restarting...")
+    python = sys.executable
+    script = os.path.abspath(sys.argv[0])
+    os.execl(python, python, script, *sys.argv[1:])
 
 def main():
     print("""
@@ -86,3 +94,4 @@ def main():
 
 
 main()
+restart_program()
